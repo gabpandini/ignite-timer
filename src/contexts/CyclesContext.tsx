@@ -1,4 +1,4 @@
-import { differenceInSeconds } from 'date-fns/esm'
+import { differenceInSeconds } from 'date-fns'
 import {
   createContext,
   ReactNode,
@@ -11,7 +11,7 @@ import {
   interruptCurrentCycleAction,
   markCurrentCycleAsFinishedAction,
 } from '../reducers/cycles/actions'
-import { Cycle, cylesReducer } from '../reducers/cycles/reducer'
+import { Cycle, cyclesReducer } from '../reducers/cycles/reducer'
 
 interface CreateCycleData {
   task: string
@@ -39,7 +39,7 @@ export function CyclesContextProvider({
   children,
 }: CyclesContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
-    cylesReducer,
+    cyclesReducer,
     {
       cycles: [],
       activeCycleId: null,
@@ -55,6 +55,9 @@ export function CyclesContextProvider({
     },
   )
 
+  const { cycles, activeCycleId } = cyclesState
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
     if (activeCycle) {
       return differenceInSeconds(new Date(), new Date(activeCycle.startDate))
@@ -68,9 +71,6 @@ export function CyclesContextProvider({
 
     localStorage.setItem('@ignite-timer:cycles-state-1.0.0', stateJSON)
   }, [cyclesState])
-
-  const { cycles, activeCycleId } = cyclesState
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
 
   function setSecondsPassed(seconds: number) {
     setAmountSecondsPassed(seconds)

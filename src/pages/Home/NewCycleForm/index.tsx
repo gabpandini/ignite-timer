@@ -11,10 +11,9 @@ export function NewCycleForm() {
     <FormContainer>
       <label htmlFor="task">Vou trabalhar em</label>
       <TaskInput
-        placeholder="Dê um nome para o seu projeto"
-        type="text"
         id="task"
         list="task-suggestions"
+        placeholder="Dê um nome para o seu projeto"
         disabled={!!activeCycle}
         {...register('task')}
       />
@@ -23,14 +22,13 @@ export function NewCycleForm() {
         <option value="Projeto 1" />
         <option value="Projeto 2" />
         <option value="Projeto 3" />
-        <option value="Banana" />
       </datalist>
 
       <label htmlFor="minutesAmount">durante</label>
       <MinutesAmountInput
-        placeholder="00"
         type="number"
         id="minutesAmount"
+        placeholder="00"
         step={5}
         min={5}
         max={60}
