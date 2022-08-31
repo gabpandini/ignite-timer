@@ -10,6 +10,7 @@ Librarys and tools used:
 - Immer JS;
 - ESLint;
 - Date-fns;
+- Zod;
 
 <br/>
 
