@@ -9,7 +9,7 @@ Librarys and tools used:
 - Phosphor icons;
 - Immer JS;
 - ESLint;
-- Date-fns
+- Date-fns;
 
 <br/>
 
