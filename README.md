@@ -4,7 +4,8 @@
 <p>Project created with Vite.</p>
 
 Librarys and tools used: 
-- React; 
+- React;
+- React Router;
 - Styled components; 
 - Phosphor icons;
 - Immer JS;
